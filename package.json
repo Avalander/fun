@@ -1,0 +1,19 @@
+{
+  "name": "@avalander/func",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_PATH=src tape 'test/**/*.test.js' | tap-diff"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [],
+  "author": "Avalander",
+  "license": "ISC",
+  "devDependencies": {
+    "tap-diff": "^0.1.1",
+    "tape": "^4.9.1"
+  }
+}
