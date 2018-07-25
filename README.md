@@ -1,0 +1,1 @@
+This is a collection of functional primitives that I reuse across projects.
