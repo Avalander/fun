@@ -16,7 +16,7 @@ It returns an instance of `Left` wrapping the given value.
 
 It returns an instance of `Right` wrapping the given value.
 
-### `tryCatch :: (...args -> a) throws fn => fn -> ...args -> Either a`
+### `tryCatch :: (...args -> a) throws fn => (fn, ...args) -> Either a`
 
 `tryCatch` receives a function that may throw an exception and a list of arguments. It will apply the arguments to the function and return a `Left` if the function throws or a `Right` wrapping the result otherwise.
 
@@ -30,7 +30,7 @@ tryCatch(noOddsPlz, 4) // -> Right(4)
 tryCatch(noOddsPlz, 3) // -> Left(Error(It was odd))
 ```
 
-### `conditional :: (a -> bool) -> string? -> a -> Either a`
+### `conditional :: ((a -> bool), string?) -> a -> Either a`
 
 `conditional` recieves a predicate function that takes a value and returns a `boolean`, and an optional string as a `reason` and returns a function that will take a value, apply the predicate function and return an instance of `Right` if the predicate returns `true` or an instance of `Left` with the `reason` if the predicate returns `false`.
 
@@ -63,7 +63,7 @@ Right(3).map(x => Left(x - 1)) // -> Left(2)
 Left(3).map(x => Right(x * 2)) // -> Left(3)
 ```
 
-### `fold :: (a -> c) -> (b -> c) -> c`
+### `fold :: ((a -> c), (b -> c)) -> c`
 
 It receives a left function that will be applied to the wrapped value of a `Left` instance and a right function that will be applied to the wrapped value of a `Right` instance. In both cases, the result of the function will be returned.
 
@@ -103,7 +103,7 @@ fromNullable(null) // -> Nothing
 fromNullable('potato') // -> Just(potato)
 ```
 
-### `fromList :: List a => a -> Maybe a`
+### `fromList :: [a] -> Maybe a`
 
 Receives an array-like object. Returns an instance of `Nothing` if the object is empty and an instance of `Just` wrapping the object otherwise.
 
@@ -136,7 +136,7 @@ Just(3).chain(x => x * 2) // -> 'Error: fn in Maybe.chain(fn) must return an ins
 Nothing().chain(x => Just(x * 2)) // -> Nothing
 ```
 
-### `fold :: (() -> b) -> (a -> b) -> b`
+### `fold :: ((() -> b), (a -> b)) -> b`
 
 Applies the left function if it is an instance of `Nothing` or the right function if it is an instance of `Just` to the wrapped value and returns the result.
 
