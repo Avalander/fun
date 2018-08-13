@@ -11,7 +11,7 @@
   ],
   "keywords": [],
   "author": "Avalander",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "tap-diff": "^0.1.1",
     "tape": "^4.9.1"
