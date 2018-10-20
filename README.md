@@ -150,3 +150,41 @@ Nothing.fold(
 	x => x * 2
 ) // -> -1
 ```
+
+# Util
+
+```javascript 
+import { exists, pipe, compose } from '@avalander/fun/src/util'
+```
+
+### `exists :: a -> boolean`
+
+Returns `true` if value is neither `null` nor `undefined` and `false` otherwise.
+
+### `pipe :: ...(a -> b) -> (a -> b)`
+
+Receives a list of functions and returns a function that expects one argument. The argument will be passed to the first function, the return value of that function will be passed on to the next function and so forth. It returns the return value of the last function.
+
+```javascript
+const f = pipe(
+    x => x + '1',
+    x => x + '2',
+    x => x + '3'
+)
+
+const result = f('0') // '0123'
+```
+
+### `compose :: ...(a -> b) -> (a -> b)`
+
+Works like `pipe` but executes the functions in reversed order.
+
+```javascript
+const f = compose(
+    x => x + '1',
+    x => x + '2',
+    x => x + '3'
+)
+
+const result = f('0') // '0321'
+```
